@@ -1,6 +1,8 @@
 # Migrate Typetalk to Slack
 
-This is a simple script to migrate Typetalk messages to Slack.
+This is a simple script to migrate Typetalk messages to Slack.\
+Convert exported data from Typetalk to csv format that can be imported with
+Slack.
 
 ## Install
 
