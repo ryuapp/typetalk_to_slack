@@ -15,13 +15,9 @@ function quoteString(str: string | number) {
 export async function convertSlackCSV(csv: string | ReadableStream<string[]>) {
   const messages = [];
   let isHeader = true;
+  const content = typeof csv === "string" ? CSV.parse(csv) : csv;
 
-  if (typeof csv === "string") {
-    const content = CSV.parse(csv);
-    return content.join("\n");
-  }
-
-  for await (const message of csv) {
+  for await (const message of content) {
     if (isHeader) {
       isHeader = false;
       continue;
