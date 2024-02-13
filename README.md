@@ -25,5 +25,5 @@ tts [FILE]...
 
 ```sh
 tts messages.csv
-// output: messages_slack_YYYYMMDDHHmmss
+// output: messages_slack_YYYYMMDDHHmmss.csv
 ```
