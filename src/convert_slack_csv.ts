@@ -1,3 +1,5 @@
+import { CSV } from "../deps.ts";
+
 /**
  * Attach double quotes to string;
  */
@@ -10,9 +12,15 @@ function quoteString(str: string | number) {
  * @param {ReadableStream} csv
  * @returns {string} slack messages in CSV format
  */
-export async function convertSlackCSV(csv: ReadableStream<string[]>) {
+export async function convertSlackCSV(csv: string | ReadableStream<string[]>) {
   const messages = [];
   let isHeader = true;
+
+  if (typeof csv === "string") {
+    const content = CSV.parse(csv);
+    return content.join("\n");
+  }
+
   for await (const message of csv) {
     if (isHeader) {
       isHeader = false;

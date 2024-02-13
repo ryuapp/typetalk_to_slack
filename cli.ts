@@ -1,4 +1,4 @@
-import { convertSlackCSV, readStreamCSV } from "./mod.ts";
+import { convertSlackCSV, readStreamCSV, unzip } from "./mod.ts";
 import { parseArgs } from "./deps.ts";
 
 /**
@@ -52,18 +52,31 @@ if (parsedArgs._.length === 0) {
 const files = parsedArgs._;
 for (const file of files) {
   const filepath = String(file);
+  if (!filepath.endsWith(".csv") && !filepath.endsWith(".zip")) {
+    console.log(
+      `${filepath} is not a csv or a zip file.`,
+    );
+    continue;
+  }
   const isExist = await fileExists(filepath);
   if (!isExist) {
     console.log(`${filepath} does not exist.`);
     continue;
   }
 
-  const convertedCSV = await convertSlackCSV(
-    await readStreamCSV(filepath),
-  );
+  let convertedCSV: string;
+  if (filepath.endsWith(".zip")) {
+    convertedCSV = await convertSlackCSV(await unzip(filepath));
+  } else {
+    convertedCSV = await convertSlackCSV(
+      await readStreamCSV(filepath),
+    );
+  }
 
   const timestamp = getTimestamp();
-  const filename = filepath.replace(/\.csv$/, `_slack_${timestamp}.csv`);
+  const filename = filepath.endsWith(".zip")
+    ? filepath.replace(/\.zip$/, `_unzip_slack_${timestamp}.csv`)
+    : filepath.replace(/\.csv$/, `_slack_${timestamp}.csv`);
   writeCSVFile(filename, convertedCSV);
   console.log(
     `${filepath} is converted to ${filename}!`,
