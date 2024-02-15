@@ -10,7 +10,7 @@ Install the latest [Deno CLI](https://deno.com/) version.\
 And run the following command:
 
 ```sh
-deno install https://ryu.app/gh/typetalk_to_slack/cli.ts --name tts
+deno install https://ryu.app/gh/typetalk_to_slack/cli.ts --name tts --reload
 ```
 
 You can use `tts` command.
