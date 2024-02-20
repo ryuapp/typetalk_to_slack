@@ -49,7 +49,12 @@ if (parsedArgs._.length === 0) {
   Deno.exit(1);
 }
 
-const files = parsedArgs._;
+const command = parsedArgs._[0];
+const files = parsedArgs._.slice(1);
+if (command !== "convert") {
+  console.log("Unknown command.\nNow only support 'convert' command.");
+  Deno.exit(1);
+}
 for (const file of files) {
   const filepath = String(file);
   if (!filepath.endsWith(".csv") && !filepath.endsWith(".zip")) {

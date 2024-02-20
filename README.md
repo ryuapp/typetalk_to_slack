@@ -18,12 +18,12 @@ You can use `tts` command.
 ## Usage
 
 ```
-tts [FILE]...
+tts convert [FILE]...
 ```
 
 ## Example
 
 ```sh
-tts messages.csv
+tts convert messages.csv
 // output: messages_slack_YYYYMMDDHHmmss.csv
 ```
