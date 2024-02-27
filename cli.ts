@@ -45,7 +45,7 @@ function writeCSVFile(filepath: string, data: string) {
 
 const parsedArgs = parseArgs(Deno.args);
 if (parsedArgs._.length === 0) {
-  console.log("Please specify the file to convert.");
+  console.log("Usage: tts convert [FILE]...");
   Deno.exit(1);
 }
 
@@ -59,7 +59,7 @@ for (const file of files) {
   const filepath = String(file);
   if (!filepath.endsWith(".csv") && !filepath.endsWith(".zip")) {
     console.log(
-      `${filepath} is not a csv or a zip file.`,
+      `${filepath} is not a csv or zip file.`,
     );
     continue;
   }
