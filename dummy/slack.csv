@@ -1,9 +1,10 @@
 "1707530847","12345","dummy-user","こんにちは、みなさん"
 "1707530848","12345","dummy-user","こんにちは
 ```
-console.log(\"Hello\");
+console.log(""Hello"");
 ```
 > Faster is good thing.
 :white_frowning_face: :cold_sweat: :mask: :face_vomiting: 
  @all 
 @here"
+"1707617248","12345","dummy-user","{""key"": ""value"",""key2"": ""value2""}"
