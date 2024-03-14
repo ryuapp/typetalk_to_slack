@@ -14,7 +14,7 @@ if (parsedArgs._.length === 0 || parsedArgs._[0] === "help") {
 const command = parsedArgs._[0];
 const files = parsedArgs._.slice(1);
 if (command === "convert") {
-  await convert(files);
+  await convert(files, parsedArgs);
 } else if (command === "sort") {
   await sort(files[0]);
 } else {

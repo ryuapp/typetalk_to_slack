@@ -20,7 +20,10 @@ async function fileExists(filepath: string): Promise<boolean> {
  * @param {(string | number)[]} files
  * @returns {}
  */
-export async function convert(files: (string | number)[]) {
+export async function convert(
+  files: (string | number)[],
+  args: Record<string, any>,
+) {
   let isPrinted = false;
   for (const file of files) {
     const filepath = String(file);
@@ -36,14 +39,13 @@ export async function convert(files: (string | number)[]) {
       continue;
     }
 
-    let convertedCSV: string;
+    let csvData: string | ReadableStream<string[]>;
     if (filepath.endsWith(".zip")) {
-      convertedCSV = await convertSlackCSV(await unzip(filepath));
+      csvData = await unzip(filepath);
     } else {
-      convertedCSV = await convertSlackCSV(
-        await readStreamCSV(filepath),
-      );
+      csvData = await readStreamCSV(filepath);
     }
+    const convertedCSV = await convertSlackCSV(csvData, args.d);
     if (isPrinted) printf("\n");
     printf(convertedCSV);
     isPrinted = true;
