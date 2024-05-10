@@ -3,6 +3,7 @@
 12345,78910,dummy-user,ダミィ,"こんにちは
 ```
 console.log(""Hello"");
+// \""
 ```
 > Faster is good thing.
 :white_frowning_face: :cold_sweat: :mask: :face_vomiting: 

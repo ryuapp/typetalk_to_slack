@@ -34,7 +34,9 @@ export async function convertSlackCSV(
     const timestamp = quoteString(new Date(message[5]).getTime() / 1000);
     const channel = quoteString(message[0]);
     const user = quoteString(message[2]);
-    const body = quoteString(message[4].replace(/\"/g, '\\"'));
+    const body = quoteString(
+      message[4].replace(/\\"/g, "\\“").replace(/\"/g, '\\"'),
+    );
     messages.push([timestamp, channel, user, body].join(delimiter));
   }
   return messages.join("\n");
