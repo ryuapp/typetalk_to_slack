@@ -31,3 +31,7 @@ standard output.
 ```sh
 tts convert messages.csv > messages_slack.csv
 ```
+
+> [!NOTE]
+> If the message body contains `\"`, it cannot be imported into Slack.
+> So this tool replaces `\"` with `\“`.

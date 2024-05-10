@@ -28,3 +28,7 @@ deno install -g --allow-read --reload --name tts https://ryu.app/gh/typetalk_to_
 ```sh
 tts convert messages.csv > messages_slack.csv
 ```
+
+> [!NOTE]
+> メッセージ本文に`\"`が含まれる場合、Slackにインポートできません。
+> そのため、このツールは`\"`を`\“`に置き換えます。
