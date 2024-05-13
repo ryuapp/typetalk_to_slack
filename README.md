@@ -3,9 +3,9 @@
   [<a href="doc/README_ja.md">日本語</a>]
 </p>
 
-# Migrate Typetalk to Slack
+# Typetalk to Slack Migration Tool
 
-This is a simple CLI to migrate Typetalk messages to Slack.\
+This is a tool to migrate from Typetalk to Slack.\
 Convert exported data from Typetalk to csv format that can be imported with
 Slack.
 
@@ -32,6 +32,5 @@ standard output.
 tts convert messages.csv > messages_slack.csv
 ```
 
-> [!NOTE]
-> If the message body contains `\"`, it cannot be imported into Slack.
+> [!NOTE] If the message body contains `\"`, it cannot be imported into Slack.
 > So this tool replaces `\"` with `\“`.
