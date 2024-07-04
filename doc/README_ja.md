@@ -14,7 +14,7 @@ Typetalkから出力したデータをSlackでインポートできるcsv形式�
 インストールが終わったら、以下のコマンドを実行します。
 
 ```sh
-deno install -g --allow-read --reload --name tts https://ryu.app/gh/typetalk_to_slack/cli.ts
+deno install -g -r --allow-read --name tts https://raw.githubusercontent.com/ryuapp/typetalk_to_slack/main/cli.ts
 ```
 
 これで`tts`コマンドを使用できます。
